@@ -6,6 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberGuard Insights website</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .login-box {
+            position: absolute;
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            top: 30%;
+        }
+
+        .login-box input[type="text"],
+        .login-box input[type="password"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-box input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-box input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,10 +54,13 @@
             <div class="remember-submit">
                 <input type="checkbox" id="remember" name="remember">
                 <label for="remember">Se souvenir de moi</label>
-                <input type="submit" value="Se connecter">
+                <input type="submit" onclick="location.href='interface.html';" value="Se connecter">
+                <!-- le button fonctionne pas bien si on rentre des infos dans les inputs puis qu'on clique ca ne charge pas la bonne page -->
             </div>
+
         </form>
     </div>
+
 </body>
 
 </html>
