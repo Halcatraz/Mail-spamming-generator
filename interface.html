@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberGuard Insights website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .settings {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            width: 200px;
+            /* height: 100px; */
+            padding: 20px;
+            background-color: #284566;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .mail-part {
+            position: absolute;
+            top: 20%;
+            left: 35%;
+            width: 700px;
+            height: auto;
+            padding: 50px;
+            background-color: #284566;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-zone {
+            position: relative;
+            top: 30%;
+            left: 0%;
+            width: auto;
+            height: auto;
+            padding: 50px;
+            background-color: #C1CCD9;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-button {
+            display: inline-block;
+            width: 150px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+        .button-send {
+            position: relative;
+            left: 80%;
+            margin: 20px;
+        }
+
+        .email-object-container {
+            width: 100%;
+            margin: 5px auto;
+        }
+
+        .email-object {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            /* background-color: #C1CCD9; */
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <img id="logo" src="NewCyberGuardInsightsLogo.png">
+
+    <div class="settings">
+        <div class="button-container">
+            <button class="custom-button">Phishing</button>
+            <button class="custom-button">Malware</button>
+            <button class="custom-button">Scam</button>
+            <button class="custom-button">Attaque ciblée </button>
+            <button class="custom-button">Autre </button>
+        </div>
+    </div>
+
+    <div class="mail-part">
+        <div class="">
+            liste de diffusion
+        </div>
+        <div class="email-object-container">
+            <textarea class="email-object" placeholder="Objet de l'email"></textarea>
+        </div>
+
+        <div class="text-zone">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </div>
+
+        <div class="button-send">
+            <button class="custom-button"> Envoyer</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
