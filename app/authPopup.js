@@ -84,7 +84,38 @@ function readMail() {
         });
 }
 */
-function sendMail(toList, subject, body) {
+
+function sendMail() {
+    var emailListText = document.querySelector('.email-list-diffusion').value.trim();
+    var emailObject = document.querySelector('.email-object').value;
+    var emailBody = document.querySelector('.text-zone').innerText;
+
+    if (emailListText === '') {
+        alert('Veuillez saisir une adresse e-mail.');
+        return;
+    }
+
+    // Diviser le contenu en une liste d'adresses e-mail
+    var emails = emailListText.split(',').map(email => email.trim());
+
+    // Vérifier si le format de chaque adresse e-mail est valide
+    for (var i = 0; i < emails.length; i++) {
+        var email = emails[i];
+        if (!validateEmail(email)) {
+            alert('Veuillez saisir une adresse e-mail valide.');
+            return;
+        }
+    }
+    sendMailFunction(emails, emailObject, emailBody); // Utilisez 'emails' au lieu de 'email'
+}
+
+function validateEmail(email) {
+    // Expression régulière pour valider une adresse e-mail
+    var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function sendMailFunction(toList, subject, body) {
     getTokenPopup(tokenRequest)
         .then(response => {
             const accessToken = response.accessToken;
@@ -118,16 +149,18 @@ function sendMail(toList, subject, body) {
                     throw new Error("Error sending email");
                 }
                 console.log("Email sent successfully!");
+                alert("E-mail envoyé avec succès!");
+                document.querySelector('.email-list-diffusion').value = '';
+                document.querySelector('.email-object').value = '';
             })
             .catch(error => {
                 console.error(error);
+                alert("Erreur lors de l'envoi de l'e-mail: " + error.message);
             });
         })
         .catch(error => {
             console.error(error);
         });
 }
-
-
 
 selectAccount();

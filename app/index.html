@@ -16,98 +16,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
-  
-  <style>
-    body {
-      background-color: #3B445F;
-    }
-    .settings {
-            position: absolute;
-            top: 20%;
-            left: 5%; /* Adjusted left position */
-            width: 200px;
-            /* height: 100px; */
-            padding: 20px;
-            background-color: #284566;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
 
-        .mail-part {
-            position: absolute;
-            top: 20%;
-            left: 80%;
-            width: 700px;
-            height: auto;
-            padding: 50px;
-            background-color: #284566;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .text-zone {
-            position: relative;
-            top: 30%;
-            left: 0%;
-            width: auto;
-            height: auto;
-            padding: 50px;
-            background-color: #C1CCD9;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .custom-button {
-            display: inline-block;
-            width: 150px;
-            padding: 10px 20px;
-            margin: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .custom-button:hover {
-            background-color: #0056b3;
-        }
-
-        .button-container {
-            text-align: center;
-        }
-        .button-send {
-            position: relative;
-            left: 40%;
-            margin: 20px;
-        }
-
-        .email-object-container {
-            width: 100%;
-            margin: 5px auto;
-        }
-
-        .email-object {
-            position: relative;
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
-        }
-
-        .email-list-diffusion {
-            width: 100%;
-            height: auto;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
-        }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -117,70 +27,43 @@
     </a>
     <div class="btn-group ml-auto dropleft">
       <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">
-        Sign In
+        Connexion
       </button>
     </div>
   </nav>  
   
+  <h5 class="card-header text-center" id="welcomeMessage"> Bienvenue dans CyberGuard Insights !</h5>
   <br>
-  <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.js</h5>
-  <br>
-  <div class="row" style="margin:auto">
 
-    <div id="card-div" class="col-md-3" style="display:none">
-        <div class="card text-center">
-          <div class="card-body">
-            <h5 class="card-title" id="WelcomeMessage">Please sign-in to see your profile and send your mails</h5>
-            <div id="profile-div"></div>
-            <div class="settings">
-              <div class="button-container">
-                  <button class="custom-button">Phishing</button>
-                  <button class="custom-button">Malware</button>
-                  <button class="custom-button">Scam</button>
-                  <button class="custom-button">Attaque ciblée </button>
-                  <button class="custom-button">Autre </button>
-              </div>
-            </div>
-          
-
-            
-
-            <div class="mail-part">
-              <div class="email-list-container">
-                <textarea class="email-list-diffusion" placeholder="Liste de diffusion"></textarea>
-              </div>
-        
-              <div class="email-object-container">
-                <textarea class="email-object" placeholder="Objet de l'email"></textarea>
-              </div>
-              
-              <div class="text-zone">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </div>
-
-              <div class="button-send">
-                <button class="custom-button" id="sendMail" onclick="sendMail(['pierrig.le.mouel@gmail.com'], 'Test', 'Envoi automatique')"> Envoyer</button>
-              </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="col-md-4">
-      <div class="list-group" id="list-tab" role="tablist">
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div class="tab-content" id="nav-tabContent">
-      </div>
+  <div class="settings" id="spamType" style="display:none">
+    <div class="button-container">
+        <button class="custom-button">Phishing</button>
+        <button class="custom-button">Malware</button>
+        <button class="custom-button">Scam</button>
+        <button class="custom-button">Attaque ciblée </button>
+        <button class="custom-button">Autre </button>
     </div>
   </div>
-  <br>
-  <br>
+
+<div class="mail-part" id="mailArea" style="display:none">
+  <div class="email-list-container">
+    <textarea class="email-list-diffusion" placeholder="Liste de diffusion"></textarea>
+  </div>
+    <div class="email-object-container">
+        <textarea class="email-object" placeholder="Objet de l'email"></textarea>
+    </div>
+
+    <div class="text-zone">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    </div>
+
+      <button class="custom-button" id="sendMail" onclick="sendMail()"> Envoyer</button>
+
+</div>
 
   <!-- importing bootstrap.js and supporting js libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
