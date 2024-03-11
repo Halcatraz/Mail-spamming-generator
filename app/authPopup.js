@@ -66,29 +66,10 @@ function getTokenPopup(request) {
     });
 }
 
-/*function seeProfile() {
-    getTokenPopup(loginRequest)
-        .then(response => {
-            callMSGraph(graphConfig.graphMeEndpoint, response.accessToken, updateUI);
-        }).catch(error => {
-            console.error(error);
-        });
-}
-
-function readMail() {
-    getTokenPopup(tokenRequest)
-        .then(response => {
-            callMSGraph(graphConfig.graphMailEndpoint, response.accessToken, updateUI);
-        }).catch(error => {
-            console.error(error);
-        });
-}
-*/
-
 function sendMail() {
     var emailListText = document.querySelector('.email-list-diffusion').value.trim();
     var emailObject = document.querySelector('.email-object').value;
-    var emailBody = document.querySelector('.text-zone').innerText;
+    var emailBody = document.querySelector('.text-zone').value;
 
     if (emailListText === '') {
         alert('Veuillez saisir une adresse e-mail.');
@@ -152,6 +133,7 @@ function sendMailFunction(toList, subject, body) {
                 alert("E-mail envoyé avec succès!");
                 document.querySelector('.email-list-diffusion').value = '';
                 document.querySelector('.email-object').value = '';
+                document.querySelector('.text-zone').value = '';
             })
             .catch(error => {
                 console.error(error);
