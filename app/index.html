@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Microsoft identity platform</title>
+  <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon">
+
+   <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+  <script src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.js"
+    integrity="sha384-o4ufwq3oKqc7IoCcR08YtZXmgOljhTggRwxP2CLbSqeXGtitAxwYaUln/05nJjit"
+    crossorigin="anonymous"></script>
+  
+  <!-- adding Bootstrap 4 for UI components  -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon">
+  
+  <style>
+    body {
+      background-color: #3B445F;
+    }
+    .settings {
+            position: absolute;
+            top: 20%;
+            left: 5%; /* Adjusted left position */
+            width: 200px;
+            /* height: 100px; */
+            padding: 20px;
+            background-color: #284566;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .mail-part {
+            position: absolute;
+            top: 20%;
+            left: 80%;
+            width: 700px;
+            height: auto;
+            padding: 50px;
+            background-color: #284566;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .text-zone {
+            position: relative;
+            top: 30%;
+            left: 0%;
+            width: auto;
+            height: auto;
+            padding: 50px;
+            background-color: #C1CCD9;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-button {
+            display: inline-block;
+            width: 150px;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .custom-button:hover {
+            background-color: #0056b3;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+        .button-send {
+            position: relative;
+            left: 40%;
+            margin: 20px;
+        }
+
+        .email-object-container {
+            width: 100%;
+            margin: 5px auto;
+        }
+
+        .email-object {
+            position: relative;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .email-list-diffusion {
+            width: 100%;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3B445F;">
+    <a class="navbar-brand" href="/">
+      <img src="./CyberGuardInsightsLogo.png" alt="CyberGuard Insights" style="height: 100px; width: auto;">
+    </a>
+    <div class="btn-group ml-auto dropleft">
+      <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">
+        Sign In
+      </button>
+    </div>
+  </nav>  
+  
+  <br>
+  <h5 class="card-header text-center">Vanilla JavaScript SPA calling MS Graph API with MSAL.js</h5>
+  <br>
+  <div class="row" style="margin:auto">
+
+    <div id="card-div" class="col-md-3" style="display:none">
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title" id="WelcomeMessage">Please sign-in to see your profile and send your mails</h5>
+            <div id="profile-div"></div>
+            <div class="settings">
+              <div class="button-container">
+                  <button class="custom-button">Phishing</button>
+                  <button class="custom-button">Malware</button>
+                  <button class="custom-button">Scam</button>
+                  <button class="custom-button">Attaque ciblée </button>
+                  <button class="custom-button">Autre </button>
+              </div>
+            </div>
+          
+
+            
+
+            <div class="mail-part">
+              <div class="email-list-container">
+                <textarea class="email-list-diffusion" placeholder="Liste de diffusion"></textarea>
+              </div>
+        
+              <div class="email-object-container">
+                <textarea class="email-object" placeholder="Objet de l'email"></textarea>
+              </div>
+              
+              <div class="text-zone">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                  dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      
+                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              </div>
+
+              <div class="button-send">
+                <button class="custom-button" id="sendMail" onclick="sendMail(['pierrig.le.mouel@gmail.com'], 'Test', 'Envoi automatique')"> Envoyer</button>
+              </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="col-md-4">
+      <div class="list-group" id="list-tab" role="tablist">
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="tab-content" id="nav-tabContent">
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <!-- importing bootstrap.js and supporting js libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <!-- importing app scripts (load order is important) -->
+  <script type="text/javascript" src="./authConfig.js"></script>
+  <script type="text/javascript" src="./graphConfig.js"></script>
+  <script type="text/javascript" src="./ui.js"></script>
+
+  <!-- <script type="text/javascript" src="./authRedirect.js"></script>   -->
+  <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
+  <script type="text/javascript" src="./authPopup.js"></script>
+  <script type="text/javascript" src="./graph.js"></script>
+</body>
+
+</html>
