@@ -48,9 +48,14 @@
     <div class="mail-part" id="mailArea" style="display:none">
 
       <div class="email-list-container">
-        <textarea class="email-list-diffusion" placeholder="Liste de diffusion"></textarea> 
-        <button class="custom-button" id="listImport">Import</button>
+        <textarea class="email-list-diffusion" id ="diffusion" placeholder="Liste de diffusion"></textarea> 
+        <!-- <button class="custom-button" id="listImport">Import</button> -->
+        <!--<textarea class="email-list-diffusion" placeholder="Liste de diffusion"></textarea> -->
+        <input id="listImport" type="file" name="mail" accept="text/plain" ></input>
+        <pre hidden id="fileContent"></pre>
+        <script src="import.js"></script>
       </div>
+
         <div class="email-object-container">
             <textarea class="email-object" placeholder="Objet de l'email"></textarea>
         </div>
