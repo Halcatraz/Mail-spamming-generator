@@ -15,7 +15,7 @@ document.getElementById('listImport').addEventListener('change', function() {
     var fileContent = event.target.result;
     document.getElementById('fileContent').textContent = fileContent;
     document.getElementById('diffusion').textContent = fileContent;
-    
+
     // utilisation contenu du fichier ici
     traiterFichier(document.getElementById('fileContent').textContent);
     };
@@ -25,7 +25,6 @@ document.getElementById('listImport').addEventListener('change', function() {
 
     reader.readAsText(file);
     // possibilité ajouter ici autres actions à effectuer une fois le fichier uploadé
-    
-    
+
+
 });
-        

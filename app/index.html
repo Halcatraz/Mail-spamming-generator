@@ -11,7 +11,7 @@
     <script src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.js"
       integrity="sha384-o4ufwq3oKqc7IoCcR08YtZXmgOljhTggRwxP2CLbSqeXGtitAxwYaUln/05nJjit"
       crossorigin="anonymous"></script>
-    
+
     <!-- adding Bootstrap 4 for UI components  -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -30,35 +30,38 @@
           Connexion
         </button>
       </div>
-    </nav>  
-    
+    </nav>
+
     <h5 class="card-header text-center" id="welcomeMessage"> Bienvenue dans CyberGuard Insights !</h5>
     <br>
 
     <div class="settings" id="spamType" style="display:none">
       <div class="button-container">
-          <button class="custom-button">Phishing</button>
-          <button class="custom-button">Malware</button>
-          <button class="custom-button">Scam</button>
-          <button class="custom-button">Attaque ciblée </button>
-          <button class="custom-button">Autre </button>
+          <button id="Phishing" class="custom-button">Phishing</button>
+          <button id="Malware" class="custom-button">Malware</button>
+          <button id="Scam" class="custom-button">Scam</button>
+          <button id="Attaque" class="custom-button">Attaque ciblée </button>
+          <button id="Autre" class="custom-button">Autre </button>
       </div>
     </div>
 
     <div class="mail-part" id="mailArea" style="display:none">
 
       <div class="email-list-container">
-        <textarea class="email-list-diffusion" id ="diffusion" placeholder="Liste de diffusion"></textarea> 
+        <textarea class="email-list-diffusion" id ="diffusion" placeholder="Liste de diffusion"></textarea>
         <input id="listImport" type="file" name="mail" accept="text/plain" ></input>
         <pre hidden id="fileContent"></pre>
         <script src="import.js"></script>
       </div>
 
         <div class="email-object-container">
-            <textarea class="email-object" placeholder="Objet de l'email"></textarea>
+          <textarea class="email-object" placeholder="Objet de l'email"></textarea>
         </div>
-        
-        <textarea class="text-zone" placeholder="Contenu de l'email"></textarea>
+
+        <div class="email-text-container">
+          <textarea  class="text-zone" id="content" placeholder="Contenu de l'email"></textarea>
+        </div>
+
         <button class="custom-button" id="sendMail" onclick="sendMail()"> Envoyer </button>
 
     </div>
@@ -83,6 +86,9 @@
     <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
     <script type="text/javascript" src="./authPopup.js"></script>
     <script type="text/javascript" src="./graph.js"></script>
+
+    <!-- importing script to generate text when click on button -->
+    <script type="text/javascript" src="./generateText.js"></script>
   </body>
 
 </html>
