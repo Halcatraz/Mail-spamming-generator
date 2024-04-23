@@ -51,11 +51,13 @@ Ou alors
 
 # Installation 2
 
-1. Télécharger l'image docker depuis Docker Hub : [https://hub.docker.com/repository/docker/halcatraz/cyber-guard-insights/general]
+1. Télécharger l'image docker depuis Docker Hub : https://hub.docker.com/repository/docker/halcatraz/cyber-guard-insights/general
 2. Exécuter la commande suivante pour lancer le container
 ##
       docker run -p 3000:3000 halcatraz/cyber-guard-insights
-3. Ouvrir dans le navigateur ou se connecter à [http://localhost:3000/]
+3. Ouvrir dans le navigateur ou se connecter à
+##
+      http://localhost:3000/
 
 # Avertissement
 
