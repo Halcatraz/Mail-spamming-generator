@@ -26,23 +26,36 @@ CyberGuard Insights est une application développée en JavaScript utilisant MSA
 
 # Configuration requise
 
-Avant de commencer à utiliser l'application, assurez-vous d'avoir les éléments suivants :
+Avant de commencer à utiliser l'application, assurez-vous d'avoir les éléments suivants en fonction du mode d'installation :
 
    1. Un compte Microsoft Outlook valide.
    2. Les identifiants de l'application pour accéder à l'API Microsoft Graph.
    3. Node.js installé sur votre machine.
 
-# Installation
+Ou alors
+   1. Un compte Microsoft Outlook valide.
+   2. Un compte docker hub pour pouvoir pull l'image
+   3. Docker d'installer sur votre machine
+
+# Installation 1
 
 1. Clonez ce dépôt sur votre machine locale en utilisant la commande suivante : `git clone <lien_du_depot>`
 2. Installez les dépendances Node.js en utilisant npm (Node Package Manager) : `npm install`
 
-# Configuration 
+# Configuration 1
 
 1. Lancez l'application en utilisant la commande suivante : `npm start`
 2. Accédez à l'application dans votre navigateur à l'adresse http://localhost:3000.
 3. Connectez-vous à votre compte Outlook en utilisant l'interface de connexion.
 4. Une fois connecté, vous pouvez commencer à envoyer des courriels de test pour évaluer les filtres anti-spam.
+
+# Installation 2
+
+1. Télécharger l'image docker depuis Docker Hub : [https://hub.docker.com/repository/docker/halcatraz/cyber-guard-insights/general]
+2. Exécuter la commande suivante pour lancer le container
+##
+      docker run -p 3000:3000 halcatraz/cyber-guard-insights
+3. Ouvrir dans le navigateur ou se connecter à [http://localhost:3000/]
 
 # Avertissement
 
